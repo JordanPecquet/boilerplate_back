@@ -16,6 +16,8 @@ gem "devise-jwt"
 
 gem "pg"
 
+gem "table_print"
+
 gem "faker"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]

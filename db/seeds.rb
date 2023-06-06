@@ -6,9 +6,24 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-30.times do
-    Article.create!(
-      title: Faker::Book.title,
-      content: Faker::Lorem.paragraphs(number: rand(1..4)).join("\n\n")
+10.times do
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+end
+
+users = User.all
+
+puts "Users ok"
+
+users.each do |user|
+  10.times do
+    user.articles.create!(
+      title: Faker::Commerce.product_name,
+      content: Faker::Lorem.sentence,
     )
   end
+end
+
+puts "Articles ok"
