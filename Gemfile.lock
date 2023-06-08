@@ -85,6 +85,7 @@ GEM
     devise-jwt (0.11.0)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.8)
+    dotenv (2.8.1)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
       zeitwerk (~> 2.6)
@@ -199,6 +200,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   devise-jwt
+  dotenv (~> 2.8)
   faker
   pg
   puma (~> 5.0)

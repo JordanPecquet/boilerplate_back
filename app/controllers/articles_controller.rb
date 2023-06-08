@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :check_owner, only: [:edit, :update, :destroy]
+  # before_action :authenticate_user!, except: [:index, :show]
+  # before_action :set_article, only: [:show, :edit, :update, :destroy]
+  # before_action :check_author, only: [:edit, :update, :destroy]
 
   # GET /articles
   def index
@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
+    @article = Article.find(params[:id])
     render json: @article
   end
 
@@ -44,6 +45,12 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def check_author
+      unless current_user == @article.user
+      redirect_to root_path
+      end
     end
 
     # Only allow a list of trusted parameters through.
